@@ -1,20 +1,19 @@
-## Usage
-Run the script from a terminal:
-```bash
-./simple-interest.sh
-```
-You will be prompted to enter:
-- Principal amount
-- Rate of interest (annual, in %)
-- Time period (in years)
+#!/bin/bash
 
-The script will output the calculated simple interest.
+echo "=== Simple Interest Calculator ==="
 
-## License
-This project is licensed under the Apache License 2.0 — see the [LICENSE](LICENSE) file for details.
+echo "Enter principal amount:"
+read principal
 
-## Contributing
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project.
+echo "Enter rate of interest (annual %):"
+read rate
 
-## Code of Conduct
-This project follows a [Code of Conduct](CODE_OF_CONDUCT.md) to ensure a welcoming environment for all contributors.
+echo "Enter time period (in years):"
+read time
+
+interest=$(echo "scale=2; ($principal * $rate * $time) / 100" | bc)
+
+echo "Principal: $principal"
+echo "Rate of Interest: $rate%"
+echo "Time Period: $time years"
+echo "Simple Interest = $interest"
